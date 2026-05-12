@@ -1,7 +1,7 @@
 #ifndef HEADER_H
 #define HEADER_H
-#include<vector>;
-#include<iostream>;
+#include<vector>
+#include<iostream>
 //process class
 class process {
 public:
@@ -17,7 +17,21 @@ public:
 void sorting(std::vector<process>& p);
 
 //schedular class
-class schedular {};
+class schedular {
+public:
+    virtual void schedule(std::vector<process>&) = 0;
+};
+
+//fcfs algorithm
+class fcfs :public schedular {
+    int time;
+    int time_start, time_finished;
+public:
+    fcfs(int TIME) :time(TIME) {}
+    void schedule(std::vector<process>& p) override;
+
+
+};
 
 
 #endif
