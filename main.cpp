@@ -2,14 +2,12 @@
 
 int main() {
 
-    process r[3]{
-        {"p1",0,3},
-        {"p1",2,3},
-        {"p1",1,3},
+    std::vector<process> r{
+            {"p1",0,3},
+            {"p2",2,3},
+            {"p3",1,3},
 
 
     };
-
     sorting(r);
-
 }

@@ -2,6 +2,7 @@
 #define HEADER_H
 #include<vector>
 #include<iostream>
+#include <algorithm> 
 //process class
 class process {
 public:
@@ -27,7 +28,7 @@ class fcfs :public schedular {
     int time;
     int time_start, time_finished;
 public:
-    fcfs(int TIME) :time(TIME) {}
+    fcfs(int TIME) :time(TIME), time_start(0), time_finished(0) {}
     void schedule(std::vector<process>& p) override;
 
 

@@ -3,7 +3,8 @@
 void fcfs::schedule(std::vector<process>& p) {
     int size = p.size();
     int i = 0;
-    while (1)
+    int loop_counter = 0;
+    while (loop_counter < p.size())
     {
         if (time >= p[i].arrival_time) {
             time_start = time;
@@ -17,6 +18,7 @@ void fcfs::schedule(std::vector<process>& p) {
         }
         if (i == p.size())
             break;
+        loop_counter++;
     }
 
 
