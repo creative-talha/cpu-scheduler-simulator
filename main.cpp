@@ -9,5 +9,5 @@ int main() {
 
 
     };
-    sorting(r);
+    std::cout << r.size();
 }
