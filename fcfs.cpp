@@ -1,14 +1,12 @@
 #include"header.h"
 
 void fcfs::schedule(std::vector<process>& p) {
-    int size = p.size();
+
     int i = 0;
-    int loop_counter = 0;
+
     while (i < p.size())
     {
-        //checking is there are any more processes 
-        if (i == p.size())
-            break;
+
 
         //if the process has arrived and cpu is free
         if (time >= p[i].arrival_time) {
@@ -23,7 +21,7 @@ void fcfs::schedule(std::vector<process>& p) {
 
         //if process hasn,t arrived and cpu is free 
         else {
-            std::cout << "CPU idle at: " << time << std::endl; time++;
+            std::cout << "CPU idle at: " << time << std::endl; time = p[i].arrival_time;
         }
 
     }
