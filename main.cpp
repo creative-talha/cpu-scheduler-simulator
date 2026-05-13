@@ -9,5 +9,8 @@ int main() {
 
 
     };
-    std::cout << r.size();
+    sorting(r);
+    fcfs f;
+    f.schedule(r);
+    printer(r);
 }

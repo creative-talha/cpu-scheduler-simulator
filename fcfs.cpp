@@ -15,7 +15,9 @@ void fcfs::schedule(std::vector<process>& p) {
             time_start = time;
             time_finished = time_start + p[i].brust_time;
             time += p[i].brust_time;
-            std::cout << p[i].id << " Started:" << time_start << " Finished:" << time_finished << std::endl;
+            p[i].completion_time = time_finished;
+            p[i].turnaround_time = p[i].completion_time - p[i].arrival_time;
+            p[i].waiting_time = p[i].turnaround_time - p[i].brust_time;
             i++;
         }
 

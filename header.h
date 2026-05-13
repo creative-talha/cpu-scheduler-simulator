@@ -3,6 +3,7 @@
 #include<vector>
 #include<iostream>
 #include <algorithm> 
+
 //process class
 class process {
 public:
@@ -17,6 +18,8 @@ public:
 //sorting function
 void sorting(std::vector<process>& p);
 
+void printer(std::vector<process>&);
+
 //schedular class
 class schedular {
 public:
@@ -28,8 +31,9 @@ class fcfs :public schedular {
     int time;
     int time_start, time_finished;
 public:
-    fcfs(int TIME) :time(TIME), time_start(0), time_finished(0) {}
+    fcfs() :time(0), time_start(0), time_finished(0) {}
     void schedule(std::vector<process>& p) override;
+
 
 
 };
