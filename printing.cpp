@@ -17,7 +17,9 @@ void printer(std::vector<process>& p) {
         << std::setw(5) << "|"
         << std::setw(5) << "WT"
         << std::setw(5) << "|"
-        << std::setw(10) << "TAT |" << std::endl;
+        << std::setw(05) << "TAT"
+        << std::setw(5) << "|"
+        << std::setw(10) << "RT |" << std::endl;
     for (int i = 0;i < p.size();i++)
     {
 
@@ -34,6 +36,8 @@ void printer(std::vector<process>& p) {
             << std::setw(5) << p[i].waiting_time
             << std::setw(5) << "|"
             << std::setw(5) << p[i].turnaround_time
+            << std::setw(5) << "|"
+            << std::setw(5) << p[i].remaining_time
             << std::setw(5) << "|" << std::endl;
 
     }
