@@ -17,10 +17,20 @@ public:
 }
 ;
 
-//sorting function
-void sorting(std::vector<process>& p);
-//printing function
-void printer(std::vector<process>&);
+class helper_class {
+
+public:
+
+    void  sorting(std::vector<process>&);
+    virtual void printer(std::vector<process>&) = 0;
+
+
+};
+
+
+
+
+
 
 //schedular class
 class schedular {
@@ -29,19 +39,21 @@ public:
 };
 
 //fcfs algorithm
-class fcfs :public schedular {
+class fcfs :public schedular, public helper_class {
     int time;
     int time_start, time_finished;
 public:
     fcfs() :time(0), time_start(0), time_finished(0) {}
     void schedule(std::vector<process>& p) override;
+    void printer(std::vector<process>&) override;
+
 
 
 
 };
 
 //roundrobin function
-class RoundRobin :public schedular {
+class RoundRobin :public schedular, public helper_class {
     int time;
     int quantum_time;
 
@@ -51,6 +63,7 @@ public:
 
     void schedule(std::vector<process>&)override;
     process* running_queue(process*, std::queue<process*>&);
+    void printer(std::vector<process>&) override;
 
     int gettime() {
         return time;
@@ -59,6 +72,14 @@ public:
     int get_Quantumtime() {
         return quantum_time;
     }
+};
+
+// SJF Algorithm
+class sjf : public schedular{
+    int current_time;
+public:
+    sjf(): current_time(0){}
+    void schedule(std::vector<process>& p) override;
 };
 
 

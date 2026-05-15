@@ -15,7 +15,7 @@ void RoundRobin::schedule(std::vector<process>& p) {
 
 
         if (readyQueue.empty()) {
-            time += p[i].arrival_time;
+            time++;
             continue;
         }
 
