@@ -4,7 +4,7 @@
 process::process(std::string Id, int at, int bt)
     : id(Id),
     arrival_time(at),
-    brust_time(bt),
+    burst_time(bt),
     remaining_time(bt),
     completion_time(0),
     waiting_time(0),
@@ -22,7 +22,7 @@ std::string process::get_id() const {
 }
 
 int process::get_burst_time() const {
-    return brust_time;
+    return burst_time;
 }
 
 int process::get_completion_time() const {
@@ -56,5 +56,5 @@ void process::calculate_metrics() {
 
     turnaround_time = completion_time - arrival_time;
 
-    waiting_time = turnaround_time - brust_time;
+    waiting_time = turnaround_time - burst_time;
 }

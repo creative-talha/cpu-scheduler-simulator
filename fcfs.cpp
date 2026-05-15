@@ -11,8 +11,8 @@ void fcfs::schedule(std::vector<process>& p) {
         //if the process has arrived and cpu is free
         if (current_time >= p[i].get_arrival_time()) {
             time_start = current_time;
-            time_finished = time_start + p[i].get_arrival_time();
-            current_time += p[i].get_arrival_time();
+            time_finished = time_start + p[i].get_burst_time();
+            current_time += p[i].get_burst_time();
             p[i].set_completion_time(time_finished);
             p[i].calculate_metrics();
             i++;

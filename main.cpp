@@ -118,6 +118,7 @@ int main() {
     //SJF
     else {
         sjf s;
+        s.sorting(p);
         s.schedule(p);
         s.printer(p);
     }

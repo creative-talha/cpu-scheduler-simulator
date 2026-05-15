@@ -4,7 +4,7 @@
 
 
 
-void printer(std::vector<process>& p) {
+void helper_class::printer(std::vector<process>& p) {
 
 
     //printing the main header first

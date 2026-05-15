@@ -10,7 +10,7 @@
 class process {
 private:
     std::string id;
-    int arrival_time, brust_time, completion_time, waiting_time, turnaround_time, remaining_time;
+    int arrival_time, burst_time, completion_time, waiting_time, turnaround_time, remaining_time;
 
 public:
     process(std::string Id, int at, int bt);
