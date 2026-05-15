@@ -5,6 +5,8 @@
 #include<iostream>
 #include <algorithm> 
 #include<queue>
+#include <limits>
+#include <string>  
 
 //process class
 class process {
@@ -74,7 +76,6 @@ public:
     process* running_queue(process*, std::queue<process*>&);
 
     //helper functions
-    ;
 
     int get_time() {
         return current_time;
