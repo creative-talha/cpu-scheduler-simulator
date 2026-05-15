@@ -75,10 +75,10 @@ public:
 };
 
 // SJF Algorithm
-class sjf : public schedular{
+class sjf : public schedular {
     int current_time;
 public:
-    sjf(): current_time(0){}
+    sjf() : current_time(0) {}
     void schedule(std::vector<process>& p) override;
 };
 

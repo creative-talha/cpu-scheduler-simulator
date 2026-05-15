@@ -3,6 +3,6 @@
 int main() {
 
     //asking user :
-    std::cout << "Enter the Number of Processes:";
+    std::cout << "Enter the Number of Processes";
 
 }
