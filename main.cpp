@@ -11,8 +11,11 @@ int main() {
         std::cout << "Enter Number of Processess : ";
         std::cin >> pro;
         std::cout << "=================================\n";
-        if (std::cin.fail() || pro <= 0) {
+        if (std::cin.fail() || pro <= 0 || std::cin.peek() != '\n') {
+
             std::cout << "Invalid Input!!!Please enter valid input!!!" << std::endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
         else {
             break;
