@@ -6,7 +6,7 @@ void RoundRobin::schedule(std::vector<process>& p) {
 
     while (!readyQueue.empty() || i < p.size()) {
 
-        while (i < p.size() && p[i].arrival_time <= time)
+        while (i < p.size() && p[i].get_arrival_time() <= current_time)
         {
             readyQueue.push(&p[i]);
             i++;
@@ -15,19 +15,19 @@ void RoundRobin::schedule(std::vector<process>& p) {
 
 
         if (readyQueue.empty()) {
-            time++;
+            current_time++;
             continue;
         }
 
         process* temp = running_queue(readyQueue.front(), readyQueue);
 
 
-        while (i < p.size() && p[i].arrival_time <= time)
+        while (i < p.size() && p[i].get_arrival_time() <= current_time)
         {
             readyQueue.push(&p[i]);
             i++;
         }
-        if (temp->remaining_time != 0) {
+        if (temp->get_remaining_time() != 0) {
             readyQueue.push(temp);
         }
 
@@ -41,14 +41,13 @@ process* RoundRobin::running_queue(process* p, std::queue<process*>& queue) {
     //running the process 
 
 
-    int execution_time = std::min(p->remaining_time, quantum_time);
-    p->remaining_time -= execution_time;
-    time += execution_time;
+    int execution_time = std::min(p->get_remaining_time(), quantum_time);
+    p->execute(execution_time);
+    current_time += execution_time;
 
-    if (p->remaining_time == 0) {
-        p->completion_time = time;
-        p->turnaround_time = p->completion_time - p->arrival_time;
-        p->waiting_time = p->turnaround_time - p->brust_time;
+    if (p->get_remaining_time() == 0) {
+        p->set_completion_time(current_time);
+        p->calculate_metrics();
     }
 
     return p;

@@ -8,29 +8,37 @@
 
 //process class
 class process {
-public:
+private:
     std::string id;
     int arrival_time, brust_time, completion_time, waiting_time, turnaround_time, remaining_time;
 
+public:
+    process(std::string Id, int at, int bt);
+    //getters
+    std::string get_id() const;
+    int get_arrival_time() const;
+    int get_burst_time() const;
+    int get_completion_time() const;
+    int get_waiting_time() const;
+    int get_turnaround_time() const;
+    int get_remaining_time() const;
+    //setters
+    void set_completion_time(int ct);
 
-    process(std::string Id, int at, int bt) : arrival_time(at), brust_time(bt), id(Id), remaining_time(brust_time), completion_time(0), waiting_time(0), turnaround_time(0) {}
-}
-;
+    //execution functions
+    void execute(int execution_time);//for RR only
+    void calculate_metrics(); //used by all
+};
 
 class helper_class {
 
 public:
 
     void  sorting(std::vector<process>&);
-    virtual void printer(std::vector<process>&) = 0;
+    void printer(std::vector<process>&);
 
 
 };
-
-
-
-
-
 
 //schedular class
 class schedular {
@@ -40,12 +48,12 @@ public:
 
 //fcfs algorithm
 class fcfs :public schedular, public helper_class {
-    int time;
+    int current_time;
     int time_start, time_finished;
 public:
-    fcfs() :time(0), time_start(0), time_finished(0) {}
+    fcfs() :current_time(0), time_start(0), time_finished(0) {}
     void schedule(std::vector<process>& p) override;
-    void printer(std::vector<process>&) override;
+
 
 
 
@@ -54,28 +62,31 @@ public:
 
 //roundrobin function
 class RoundRobin :public schedular, public helper_class {
-    int time;
+    int current_time;
     int quantum_time;
 
 public:
-
-    RoundRobin(int QUANTUM_TIME) :time(0), quantum_time(QUANTUM_TIME) {}
-
+    //constructor
+    RoundRobin(int QUANTUM_TIME) :current_time(0), quantum_time(QUANTUM_TIME) {}
+    //schedular algo
     void schedule(std::vector<process>&)override;
+    //running queue function
     process* running_queue(process*, std::queue<process*>&);
-    void printer(std::vector<process>&) override;
 
-    int gettime() {
-        return time;
+    //helper functions
+    ;
+
+    int get_time() {
+        return current_time;
     }
 
-    int get_Quantumtime() {
+    int get_quantumtime() {
         return quantum_time;
     }
 };
 
 // SJF Algorithm
-class sjf : public schedular {
+class sjf : public schedular, public helper_class {
     int current_time;
 public:
     sjf() : current_time(0) {}

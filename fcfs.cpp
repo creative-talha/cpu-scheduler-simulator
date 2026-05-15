@@ -9,19 +9,18 @@ void fcfs::schedule(std::vector<process>& p) {
 
 
         //if the process has arrived and cpu is free
-        if (time >= p[i].arrival_time) {
-            time_start = time;
-            time_finished = time_start + p[i].brust_time;
-            time += p[i].brust_time;
-            p[i].completion_time = time_finished;
-            p[i].turnaround_time = p[i].completion_time - p[i].arrival_time;
-            p[i].waiting_time = p[i].turnaround_time - p[i].brust_time;
+        if (current_time >= p[i].get_arrival_time()) {
+            time_start = current_time;
+            time_finished = time_start + p[i].get_arrival_time();
+            current_time += p[i].get_arrival_time();
+            p[i].set_completion_time(time_finished);
+            p[i].calculate_metrics();
             i++;
         }
 
         //if process hasn,t arrived and cpu is free 
         else {
-            std::cout << "CPU idle at: " << time << std::endl; time = p[i].arrival_time;
+            std::cout << "CPU idle at: " << current_time << std::endl; current_time = p[i].get_arrival_time();
         }
 
     }
