@@ -96,6 +96,8 @@ int main() {
         f.sorting(p);
         f.schedule(p);
         f.printer(p);
+        std::cout << "\n\n";
+        f.chart_printing(gantt_process, gantt_time);
     }
     // RR
     else if (choice == 2) {

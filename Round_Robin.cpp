@@ -45,6 +45,8 @@ process* RoundRobin::running_queue(process* p, std::queue<process*>& queue) {
     int execution_time = std::min(p->get_remaining_time(), quantum_time);
     p->execute(execution_time);
     current_time += execution_time;
+    gantt_process.push_back(p->get_id());
+    gantt_time.push_back(current_time);
 
     if (p->get_remaining_time() == 0) {
         p->set_completion_time(current_time);

@@ -9,8 +9,8 @@
 #include <string>  
 
 //gantt chart variables
-std::vector<std::string> gantt_process;
-std::vector<int> gantt_time;
+extern std::vector<std::string> gantt_process;
+extern std::vector<int> gantt_time;
 
 //process class
 class process {

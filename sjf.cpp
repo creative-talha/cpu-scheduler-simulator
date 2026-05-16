@@ -2,7 +2,7 @@
 #include <climits>
 
 void sjf::schedule(std::vector<process>& p) {
-
+    gantt_time.push_back(0);
 
     // array for number of procceses completed
     std::vector<bool> completed(p.size(), false);
@@ -37,6 +37,8 @@ void sjf::schedule(std::vector<process>& p) {
         p[idx].set_completion_time(current_time);
 
         p[idx].calculate_metrics();
+        gantt_process.push_back(p[idx].get_id());
+        gantt_time.push_back(current_time);
 
         completed[idx] = true;
         completed_process++;

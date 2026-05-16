@@ -42,6 +42,10 @@ void helper_class::printer(std::vector<process>& p) {
 
 }
 
+//gantt chart variables
+std::vector<std::string> gantt_process;
+std::vector<int> gantt_time;
+
 void helper_class::chart_printing(std::vector<std::string> process, std::vector<int> time) {
     //top line
     for (int i = 0; i < process.size(); i++) {
@@ -51,6 +55,6 @@ void helper_class::chart_printing(std::vector<std::string> process, std::vector<
 
     //bottom line
     for (int i = 0; i < time.size(); i++) {
-        std::cout << time[i] << "\t";
+        std::cout << time[i] << "    ";
     }
 }
