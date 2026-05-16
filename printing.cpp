@@ -6,7 +6,8 @@
 
 void helper_class::printer(std::vector<process>& p) {
 
-
+    system("clear");
+    std::cout << "\n\tTable:\n";
     //printing the main header first
     std::cout << std::setw(5) << "Process"
         << std::setw(3) << "|"
@@ -24,7 +25,6 @@ void helper_class::printer(std::vector<process>& p) {
     {
 
         std::cout << std::setfill('-') << std::setw(61) << std::endl;
-        std::cout << "\n";
         std::cout << std::setfill(' ') << std::setw(5) << p[i].get_id()
             << std::setw(5) << "|"
             << std::setw(5) << p[i].get_arrival_time()
@@ -40,21 +40,44 @@ void helper_class::printer(std::vector<process>& p) {
 
     }
 
+    //calculating avg
+    double avg_wt = 0, avg_tat = 0;
+    for (int i = 0; i < p.size(); i++) {
+        avg_wt += p[i].get_waiting_time();
+        avg_tat += p[i].get_turnaround_time();
+    }
+    avg_wt /= p.size();
+    avg_tat /= p.size();
+
+    std::cout << "\n\tAverage Data:\n";
+    std::cout << std::fixed << std::setprecision(2);
+    std::cout << "\nAverage Waiting Time    : " << avg_wt << "\n";
+    std::cout << "Average Turnaround Time : " << avg_tat << "\n";
 }
 
-//gantt chart variables
-std::vector<std::string> gantt_process;
-std::vector<int> gantt_time;
+
 
 void helper_class::chart_printing(std::vector<std::string> process, std::vector<int> time) {
-    //top line
-    for (int i = 0; i < process.size(); i++) {
-        std::cout << "| " << process[i] << " ";
-    }
-    std::cout << "|" << std::endl;
 
-    //bottom line
-    for (int i = 0; i < time.size(); i++) {
-        std::cout << time[i] << "    ";
-    }
+    std::cout << "\n\tGantt Chart:\n";
+    // top border
+    for (int i = 0; i < process.size(); i++)
+        std::cout << "+-----";
+    std::cout << "+" << "\n";
+
+    // process names
+    for (int i = 0; i < process.size(); i++)
+        std::cout << "|  " << std::setw(2) << process[i] << " ";
+    std::cout << "|" << "\n";
+
+    // bottom border
+    for (int i = 0; i < process.size(); i++)
+        std::cout << "+-----";
+    std::cout << "+" << "\n";
+
+    // time labels
+    std::cout << std::setw(1) << time[0];
+    for (int i = 1; i < time.size(); i++)
+        std::cout << std::setw(6) << time[i];
+    std::cout << "\n";
 }

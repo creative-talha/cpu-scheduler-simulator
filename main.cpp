@@ -1,5 +1,10 @@
 #include"header.h"
 #include<iostream>
+
+//gantt chart variables
+std::vector<std::string> gantt_process;
+std::vector<int> gantt_time;
+
 int main() {
 
     std::cout << "=================================" << std::endl;
@@ -128,6 +133,8 @@ int main() {
         s.sorting(p);
         s.schedule(p);
         s.printer(p);
+        std::cout << "\n\n";
+        s.chart_printing(gantt_process, gantt_time);
     }
 
     return 0;
