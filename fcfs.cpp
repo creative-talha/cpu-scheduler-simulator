@@ -3,6 +3,7 @@
 void fcfs::schedule(std::vector<process>& p) {
 
     int i = 0;
+    gantt_time.push_back(0);
 
     while (i < p.size())
     {
@@ -15,6 +16,8 @@ void fcfs::schedule(std::vector<process>& p) {
             current_time += p[i].get_burst_time();
             p[i].set_completion_time(time_finished);
             p[i].calculate_metrics();
+            gantt_process.push_back(p[i].get_id());
+            gantt_time.push_back(current_time);
             i++;
         }
 

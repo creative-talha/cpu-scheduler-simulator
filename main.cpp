@@ -117,6 +117,8 @@ int main() {
         r.sorting(p);
         r.schedule(p);
         r.printer(p);
+        std::cout << "\n\n";
+        r.chart_printing(gantt_process, gantt_time);
     }
     //SJF
     else {

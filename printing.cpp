@@ -41,3 +41,16 @@ void helper_class::printer(std::vector<process>& p) {
     }
 
 }
+
+void helper_class::chart_printing(std::vector<std::string> process, std::vector<int> time) {
+    //top line
+    for (int i = 0; i < process.size(); i++) {
+        std::cout << "| " << process[i] << " ";
+    }
+    std::cout << "|" << std::endl;
+
+    //bottom line
+    for (int i = 0; i < time.size(); i++) {
+        std::cout << time[i] << "\t";
+    }
+}

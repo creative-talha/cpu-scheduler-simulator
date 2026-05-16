@@ -8,6 +8,10 @@
 #include <limits>
 #include <string>  
 
+//gantt chart variables
+std::vector<std::string> gantt_process;
+std::vector<int> gantt_time;
+
 //process class
 class process {
 private:
@@ -38,6 +42,7 @@ public:
 
     void  sorting(std::vector<process>&);
     void printer(std::vector<process>&);
+    void chart_printing(std::vector<std::string> process, std::vector<int> time);
 
 
 };

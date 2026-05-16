@@ -1,6 +1,7 @@
 #include"header.h"
 void RoundRobin::schedule(std::vector<process>& p) {
     std::queue<process*> readyQueue;
+    gantt_time.push_back(0);
     int i = 0;
     int j = 0;
 
